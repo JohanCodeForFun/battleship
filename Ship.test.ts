@@ -1,6 +1,7 @@
 import { Ship } from "./src/Ship";
 
 describe('ship', () => {
+
   it('it should have 0 hits initially', () => {
     const ship = new Ship();
 
@@ -13,5 +14,11 @@ describe('ship', () => {
     ship.hit();
 
     expect(ship.getHits()).toBe(1);
+  })
+
+  it('should have five ships for one player', () => {
+    const ship = new Ship();
+
+    expect(ship.getShips()).toBe(5);
   })
 })
