@@ -1,10 +1,15 @@
+type ship = {
+  name: string;
+  size: number;
+};
+
 export class Ship {
   private hits: number
-  private ships: number
+  private ships: ship[]
 
   constructor() {
     this.hits = 0
-    this.ships = 5;
+    this.ships = [];
   }
 
   hit() {
@@ -13,6 +18,10 @@ export class Ship {
 
   getHits() {
     return this.hits
+  }
+
+  createShip(ship: ship) {
+    this.ships.push(ship)
   }
 
   getShips() {

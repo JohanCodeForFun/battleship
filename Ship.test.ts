@@ -19,6 +19,32 @@ describe('ship', () => {
   it('should have five ships for one player', () => {
     const ship = new Ship();
 
-    expect(ship.getShips()).toBe(5);
+    const carrier = ship.createShip({name: 'Carrier',  size: 5});
+    const battleship = ship.createShip({name: 'Battleship', size: 4});
+    const cruiser = ship.createShip({name: 'Cruiser', size: 3});
+    const submarine = ship.createShip({name: 'Submarine', size: 3});
+    const destroyer = ship.createShip({name: 'Destroyter', size: 2});
+
+    expect(ship.getShips().length).toBe(5);
+  })
+
+  it('it should have correct ship names', () => {
+    const ship = new Ship();
+
+    const shipsList = [
+      {name: 'Carrier',  size: 5},
+      {name: 'Battleship', size: 4},
+      {name: 'Cruiser', size: 3},
+      {name: 'Submarine', size: 3},
+      {name: 'Destroyter', size: 2}
+    ]
+
+    const carrier = ship.createShip({name: 'Carrier',  size: 5});
+    const battleship = ship.createShip({name: 'Battleship', size: 4});
+    const cruiser = ship.createShip({name: 'Cruiser', size: 3});
+    const submarine = ship.createShip({name: 'Submarine', size: 3});
+    const destroyer = ship.createShip({name: 'Destroyter', size: 2});
+
+    expect(ship.getShips()).toEqual(shipsList);
   })
 })
