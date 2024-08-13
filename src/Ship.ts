@@ -12,16 +12,20 @@ export class Ship {
     this.ships = [];
   }
 
-  hit() {
-    this.hits += 1;
-  }
-
-  getHits() {
-    return this.hits
+  hit(shipId) {
+    if (this.ships[shipId].size > 0) {
+      this.ships[shipId].size -= 1;
+    } else {
+      return;
+    }
   }
 
   createShip(ship: ship) {
     this.ships.push(ship)
+  }
+
+  getShipHealth(id) {
+    return this.ships[id].size
   }
 
   getShips() {
