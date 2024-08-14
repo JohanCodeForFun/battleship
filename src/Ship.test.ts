@@ -1,4 +1,4 @@
-import { Ship } from "./src/Ship";
+import { Ship } from "./Ship";
 
 describe('ship', () => {
   const shipsList = [
