@@ -5,11 +5,17 @@ type ship = {
 
 export class Ship {
   private hits: number
-  private ships: ship[]
+  private ships: ship[];
 
   constructor() {
     this.hits = 0
-    this.ships = [];
+    this.ships = [
+      {name: 'Carrier',  size: 5},
+      {name: 'Battleship', size: 4},
+      {name: 'Cruiser', size: 3},
+      {name: 'Submarine', size: 3},
+      {name: 'Destroyer', size: 2}
+    ];
   }
 
   hit(shipId) {
@@ -29,6 +35,7 @@ export class Ship {
   }
 
   getShips() {
+    console.log("get ships:", this.ships)
     return this.ships
   }
 }
