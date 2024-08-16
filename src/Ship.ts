@@ -1,28 +1,33 @@
-type ship = {
+export type ship = {
   name: string;
-  size: number;
+  sunk: boolean;
+  hits: number;
 };
 
 export class Ship {
-  private hits: number
   private ships: ship[];
 
   constructor() {
-    this.hits = 0
     this.ships = [
-      {name: 'Carrier',  size: 5},
-      {name: 'Battleship', size: 4},
-      {name: 'Cruiser', size: 3},
-      {name: 'Submarine', size: 3},
-      {name: 'Destroyer', size: 2}
+      {name: 'Carrier',  hits: 5, sunk: false},
+      {name: 'Battleship', hits: 4, sunk: false},
+      {name: 'Cruiser', hits: 3, sunk: false},
+      {name: 'Submarine', hits: 3, sunk: false},
+      {name: 'Destroyer', hits: 2, sunk: false}
     ];
   }
 
+  set ship(shipData) {
+    let shipToUpdate = this.ships.find(ship => ship.name === shipData.name);
+
+    shipToUpdate = {...shipData}
+  }
+
   hit(shipId) {
-    if (this.ships[shipId].size > 0) {
-      this.ships[shipId].size -= 1;
+    if (this.ships[shipId].hits > 0) {
+      this.ships[shipId].hits -= 1;
     } else {
-      return;
+      this.ships[shipId].sunk = true;
     }
   }
 
@@ -31,11 +36,10 @@ export class Ship {
   }
 
   getShipHealth(id) {
-    return this.ships[id].size
+    return this.ships[id].hits
   }
 
   getShips() {
-    console.log("get ships:", this.ships)
     return this.ships
   }
 }

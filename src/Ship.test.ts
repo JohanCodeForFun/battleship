@@ -1,5 +1,13 @@
 import { Ship } from "./Ship";
 
+/*
+  Begin your app by creating the Ship class/factory (your choice).
+  x Your ‘ships’ will be objects that include their length, the number of times they’ve been hit and whether or not they’ve been sunk.
+  - REMEMBER you only have to test your object’s public interface. Only methods or properties that are used outside of your ‘ship’ object need unit tests.
+  x Ships should have a hit() function that increases the number of ‘hits’ in your ship.
+  - isSunk() should be a function that calculates whether a ship is considered sunk based on its length and the number of hits it has received.
+*/
+
 describe('ship', () => {
   it('it should have 0 hits initially', () => {
     const ship = new Ship();
@@ -8,9 +16,9 @@ describe('ship', () => {
     expect(ship.getShipHealth(shipId)).toBe(5);
   })
 
-  it('should decrease size when hit with id is called', () => {
+  it('should decrease hits when hit with id is called', () => {
     const ship = new Ship();
-    const carrier = ship.createShip({ name: 'Carrier', size: 5 });
+    const carrier = ship.createShip({ name: 'Carrier', hits: 5, sunk: false});
     const shipId = 0;
 
     ship.hit(shipId);
@@ -20,7 +28,7 @@ describe('ship', () => {
 
   it('should not become negative health value', () => {
     const ship = new Ship();
-    const carrier = ship.createShip({ name: 'Carrier', size: 5 });
+    const carrier = ship.createShip({ name: 'Carrier', hits: 5, sunk: false });
     const shipId = 0;
 
     ship.hit(shipId);
@@ -42,11 +50,11 @@ describe('ship', () => {
   it('it should have correct ship names', () => {
     const ship = new Ship();
     const shipsList = [
-      { name: 'Carrier', size: 5 },
-      { name: 'Battleship', size: 4 },
-      { name: 'Cruiser', size: 3 },
-      { name: 'Submarine', size: 3 },
-      { name: 'Destroyer', size: 2 }
+      { name: 'Carrier', hits: 5, sunk: false },
+      { name: 'Battleship', hits: 4, sunk: false },
+      { name: 'Cruiser', hits: 3, sunk: false },
+      { name: 'Submarine', hits: 3, sunk: false },
+      { name: 'Destroyer', hits: 2, sunk: false }
     ]
 
     expect(ship.getShips()).toEqual(shipsList);
